@@ -125,7 +125,7 @@ const zerarCronometroEpinephrine = () => {
         <View style={styles.buttonContainer}>
 
           <View style={styles.buttonRow}>
-            <Text style={styles.sideText}>Texto ao lado do botão 1</Text>
+            <Text style={styles.sideText}>botão 1</Text>
             <TouchableOpacity style={styles.button} onPress={() => {}}>
               <Text style={styles.buttonText}>Button 1</Text>
               <Feather name="heart" size={20} color="#fff" />
@@ -144,7 +144,7 @@ const zerarCronometroEpinephrine = () => {
           </View>
 
           <View style={styles.buttonRow}>
-            <Text style={styles.sideText}>{moment.utc(tempoDecorridoCPR * 1000).format('HH:mm:ss')}</Text>
+            <Text style={styles.sideTextSec}>{moment.utc(tempoDecorridoCPR * 1000).format('HH:mm:ss')}</Text>
             <TouchableOpacity style={styles.button} onPress={clickCronometroCPR}>
               <Text style={styles.buttonText}>RCP</Text>
               <Feather name="activity" size={20} color="#fff" />
@@ -155,7 +155,7 @@ const zerarCronometroEpinephrine = () => {
           </View>
 
           <View style={styles.buttonRow}>
-            <Text style={styles.sideText}>{moment.utc(tempoDecorridoShock * 1000).format('HH:mm:ss')}</Text>
+            <Text style={styles.sideTextSec}>{moment.utc(tempoDecorridoShock * 1000).format('HH:mm:ss')}</Text>
             <TouchableOpacity style={styles.button} onPress={clickCronometroShock}>
               <Text style={styles.buttonText}>Choque</Text>
               <Feather name="alert-triangle" size={20} color="#fff" />
@@ -166,7 +166,7 @@ const zerarCronometroEpinephrine = () => {
           </View>
 
           <View style={styles.buttonRow}>
-            <Text style={styles.sideText}>{moment.utc(tempoDecorridoEpinephrine * 1000).format('HH:mm:ss')}</Text>
+            <Text style={styles.sideTextSec}>{moment.utc(tempoDecorridoEpinephrine * 1000).format('HH:mm:ss')}</Text>
             <TouchableOpacity style={styles.button} onPress={clickCronometroEpinephrine}>
               <Text style={styles.buttonText}>Adrenalina</Text>
               <Feather name="edit-2" size={20} color="#fff" />
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5fcff',
   },
   buttonContainer: {
-    width: '80%',
+    width: '85%',
     justifyContent: 'space-between',
   },
   buttonRow: {
@@ -234,11 +234,15 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   sideText: {
-    fontSize: 20,
+    fontSize: 30,
+    color: '#333',
+  },
+  sideTextSec: {
+    fontSize: 30,
     color: '#333',
   },
   sideTextMain: {
-    fontSize: 30,
+    fontSize: 38,
     color: '#333',
   },
 });

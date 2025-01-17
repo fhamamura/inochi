@@ -3,9 +3,9 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import moment from 'moment';
 
 const Crono = () => {
-    // Estados para controlar o tempo decorrido e o estado de início/pausa
     const [tempoDecorrido, setTempoDecorrido] = useState(0);
     const [iniciado, setIniciado] = useState(false);
+    const [textoBotao, setTextoBotao] = useState('Iniciar');
 
     useEffect(() => {
         let interval: NodeJS.Timeout | undefined;
@@ -24,19 +24,17 @@ const Crono = () => {
     const iniciarCronometro = () => {
         if (!iniciado) {
             setIniciado(true);
-        }
-    };
-
-    const pausarCronometro = () => {
-        if (iniciado) {
+            textoBotao === 'Iniciar'|| 'Continuar' ? setTextoBotao('Pausar') : setTextoBotao('Continuar');
+        } else {
             setIniciado(false);
+            textoBotao === 'Pausar' ? setTextoBotao('Continuar') : setTextoBotao('Pausar');
         }
     };
 
     const zerarCronometro = () => {
-        clearInterval(this.interval);
         setTempoDecorrido(0);
         setIniciado(false);
+        setTextoBotao('Iniciar');
     };
 
     return (
@@ -46,10 +44,7 @@ const Crono = () => {
             </Text>
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.button} onPress={iniciarCronometro}>
-                    <Text style={styles.buttonText}>Iniciar</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={pausarCronometro}>
-                    <Text style={styles.buttonText}>Pausar</Text>
+                    <Text style={styles.buttonText}>{ textoBotao }</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.button} onPress={zerarCronometro}>
                     <Text style={styles.buttonText}>Zerar</Text>
@@ -64,7 +59,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#1e1e1e', // Fundo escuro
+        backgroundColor: '#333', // Fundo escuro
     },
     tempo: {
         fontSize: 48,
@@ -79,7 +74,7 @@ const styles = StyleSheet.create({
     },
     button: {
         flex: 1,
-        backgroundColor: '#007bff', // Cor de fundo azul
+        backgroundColor: '#999', // Cor de fundo azul
         padding: 15,
         margin: 10,
         borderRadius: 8,

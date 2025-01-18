@@ -6,6 +6,7 @@ import Moment from 'moment';
 const Epinephrine = () => {
     const [tempoDecorridoEpinephrine, setTempoDecorridoEpinephrine] = useState(0);
     const [iniciadoEpinephrine, setIniciadoEpinephrine] = useState(false);
+    const [valorEpinephrine, setValorEpinephrine] = useState(0);
 
     useEffect(() => {
             let intervalEpinephrine: NodeJS.Timeout | undefined;
@@ -21,22 +22,22 @@ const Epinephrine = () => {
         }, [iniciadoEpinephrine]);
     
         const clickCronometroEpinephrine = () => {
-          if (!iniciadoEpinephrine) {
-              setIniciadoEpinephrine(true);
-          } else {
-            setIniciadoEpinephrine(false);
-          }
+          setValorEpinephrine(valorEpinephrine + 1);
+          setTempoDecorridoEpinephrine(0);
+          setIniciadoEpinephrine(true);
         };
     
         const zerarCronometroEpinephrine = () => {
           setTempoDecorridoEpinephrine(0);
           setIniciadoEpinephrine(false);
+          setValorEpinephrine(0);
         };
 
     return (
       <View style={styles.buttonRow}>
       <Text style={styles.sideTextSec}>{Moment.utc(tempoDecorridoEpinephrine * 1000).format('HH:mm:ss')}</Text>
-      <TouchableOpacity style={styles.buttonEpinephrine} onPress={clickCronometroEpinephrine}>
+      {valorEpinephrine !=0 && <Text style={styles.buttonNumber}>{valorEpinephrine}</Text>}
+        <TouchableOpacity style={styles.buttonEpinephrine} onPress={clickCronometroEpinephrine}>
         <Text style={styles.buttonTextDark}>Adrenalina</Text>
         <Feather name="edit-2" size={20} color="#333" />
       </TouchableOpacity>
@@ -56,6 +57,7 @@ const styles = StyleSheet.create({
   sideTextSec: {
     fontSize: 30,
     color: '#333',
+    paddingRight: 10,
   },
   buttonEpinephrine: {
     flexDirection: 'row',
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFA500',
     padding: 10,
     borderRadius: 5,
-    marginLeft: 10,
+    marginLeft: 2,
   },
   buttonTextDark: {
     color: '#333',
@@ -75,12 +77,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFF',
+    backgroundColor: '#f5fcff',
     padding: 10,
     borderRadius: 5,
     marginLeft: 10,
     borderColor: '#333',
     borderWidth: 1,
+  },
+  buttonNumber: {
+    fontSize: 20,
+    borderRadius: 5,
+    backgroundColor: '#333',
+    color: '#FFF',
+    padding: 5,
   },
 });
 

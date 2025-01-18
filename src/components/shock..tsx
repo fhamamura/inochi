@@ -6,6 +6,7 @@ import Moment from 'moment';
 const Shock = () => {
     const [tempoDecorridoShock, setTempoDecorridoShock] = useState(0);
     const [iniciadoShock, setIniciadoShock] = useState(false);
+    const [valorShock, setValorShock] = useState(0);
 
     useEffect(() => {
             let intervalShock: NodeJS.Timeout | undefined;
@@ -21,21 +22,21 @@ const Shock = () => {
         }, [iniciadoShock]);
     
         const clickCronometroShock = () => {
-          if (!iniciadoShock) {
-              setIniciadoShock(true);
-          } else {
-            setIniciadoShock(false);
-          }
+          setValorShock(valorShock + 1);
+          setTempoDecorridoShock(0);
+          setIniciadoShock(true);
         };
     
         const zerarCronometroShock = () => {
           setTempoDecorridoShock(0);
           setIniciadoShock(false);
+          setValorShock(0);
         };
 
     return (
       <View style={styles.buttonRow}>
-      <Text style={styles.sideTextSec}>{Moment.utc(tempoDecorridoShock * 1000).format('HH:mm:ss')}</Text>
+        <Text style={styles.sideTextSec}>{Moment.utc(tempoDecorridoShock * 1000).format('HH:mm:ss')}</Text>
+        {valorShock !=0 && <Text style={styles.buttonNumber}>{valorShock}</Text>}
       <TouchableOpacity style={styles.buttonShock} onPress={clickCronometroShock}>
         <Text style={styles.buttonTextDark}>Choque</Text>
         <Feather name="zap" size={20} color="#333" />
@@ -56,6 +57,7 @@ const styles = StyleSheet.create({
   sideTextSec: {
     fontSize: 30,
     color: '#333',
+    paddingRight: 20,
   },
   buttonShock: {
     flexDirection: 'row',
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF200',
     padding: 10,
     borderRadius: 5,
-    marginLeft: 10,
+    marginLeft: 2,
   },
   buttonTextDark: {
     color: '#333',
@@ -75,12 +77,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFF',
+    backgroundColor: '#f5fcff',
     padding: 10,
     borderRadius: 5,
     marginLeft: 10,
     borderColor: '#333',
     borderWidth: 1,
+  },
+  buttonNumber: {
+    fontSize: 20,
+    borderRadius: 5,
+    backgroundColor: '#333',
+    color: '#FFF',
+    padding: 5,
   },
 });
 

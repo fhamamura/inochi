@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Button } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import Moment from 'moment';
 
@@ -35,14 +35,14 @@ const Cpr = () => {
 
     return (
       <View style={styles.buttonRow}>
-      <Text style={styles.sideTextSec}>{Moment.utc(tempoDecorridoCPR * 1000).format('HH:mm:ss')}</Text>
-      <TouchableOpacity style={styles.buttonRCP} onPress={clickCronometroCPR}>
-        <Text style={styles.buttonTextDark}>RCP</Text>
-        <Feather name="activity" size={20} color="#333" />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonMainX} onPress={zerarCronometroCPR}>
-        <Text style={styles.buttonTextDark}>x</Text>
-      </TouchableOpacity>
+        <Text style={styles.sideTextSec}>{Moment.utc(tempoDecorridoCPR * 1000).format('HH:mm:ss')}</Text>
+        <TouchableOpacity style={styles.buttonRCP} onPress={clickCronometroCPR}>
+          <Text style={styles.buttonTextDark}>RCP</Text>
+          <Feather name="activity" size={20} color="#333" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonMainX} onPress={zerarCronometroCPR}>
+          <Text style={styles.buttonTextDark}>x</Text>
+        </TouchableOpacity>
     </View>
     );
 };
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
   sideTextSec: {
     fontSize: 30,
     color: '#333',
+    paddingRight: 30,
   },
   buttonRCP: {
     flexDirection: 'row',
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFF',
+    backgroundColor: '#f5fcff',
     padding: 10,
     borderRadius: 5,
     marginLeft: 10,

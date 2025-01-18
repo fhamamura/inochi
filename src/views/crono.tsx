@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#999', // Cor de fundo azul
         padding: 15,
         margin: 10,
-        borderRadius: 8,
+        borderRadius: 5,
         alignItems: 'center',
     },
     buttonText: {

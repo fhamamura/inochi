@@ -18,13 +18,6 @@ function TabRoutes() {
                 tabBarInactiveTintColor: '#888',
             }}
         >
-            <Tab.Screen
-                name="Medications"
-                component={Medications}
-                options={{
-                    tabBarItemStyle: { display: 'none' },
-                }}
-            /> 
             <Tab.Screen 
                 name="Home" 
                 component={HomeView} 
@@ -47,6 +40,13 @@ function TabRoutes() {
                     tabBarLabel: "Logs",
                 }}
             />
+            <Tab.Screen
+                name="Medications"
+                component={Medications}
+                options={{
+                    tabBarItemStyle: { display: 'none' },
+                }}
+            /> 
         </Tab.Navigator>
     );
 }

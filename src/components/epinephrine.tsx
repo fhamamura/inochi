@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import Fontisto from '@expo/vector-icons/Fontisto';
 import Moment from 'moment';
 
 const Epinephrine = () => {
@@ -39,7 +39,7 @@ const Epinephrine = () => {
       {valorEpinephrine !=0 && <Text style={styles.buttonNumber}>{valorEpinephrine}</Text>}
         <TouchableOpacity style={styles.buttonEpinephrine} onPress={clickCronometroEpinephrine}>
         <Text style={styles.buttonTextDark}>Adrenalina</Text>
-        <Feather name="edit-2" size={20} color="#333" />
+        <Fontisto name="injection-syringe" size={20} color="#333" />
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttonMainX} onPress={zerarCronometroEpinephrine}>
         <Text style={styles.buttonTextDark}>x</Text>

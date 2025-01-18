@@ -10,7 +10,7 @@ const Metronome = () => {
 
   const loadSound = async () => {
     const { sound } = await Audio.Sound.createAsync(
-      require('../sounds/click1.mp3')
+      require('../sounds/click2.mp3')
     );
     soundRef.current = sound;
   };

@@ -37,8 +37,8 @@ const Cpr = () => {
       <View style={styles.buttonRow}>
         <Text style={styles.sideTextSec}>{Moment.utc(tempoDecorridoCPR * 1000).format('HH:mm:ss')}</Text>
         <TouchableOpacity style={styles.buttonRCP} onPress={clickCronometroCPR}>
-          <Text style={styles.buttonTextDark}>RCP</Text>
-          <Feather name="activity" size={20} color="#333" />
+          <Text style={styles.buttonText}>RCP</Text>
+          <Feather name="heart" size={20} color="#FFF" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonMainX} onPress={zerarCronometroCPR}>
           <Text style={styles.buttonTextDark}>x</Text>
@@ -62,10 +62,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#39e75f',
+    backgroundColor: '#ff0000',
     padding: 10,
     borderRadius: 5,
     marginLeft: 10,
+  },
+  buttonText: {
+    color: '#fff',
+    marginLeft: 10,
+    paddingRight: 10,
   },
   buttonTextDark: {
     color: '#333',

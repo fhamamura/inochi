@@ -38,7 +38,7 @@ const Main = () => {
         <Text style={styles.sideTextMain}>{Moment.utc(tempoDecorridoMain * 1000).format('HH:mm:ss')}</Text>
         <TouchableOpacity style={styles.buttonMain} onPress={clickCronometroMain}>
           <Text style={styles.buttonText}>Principal</Text>
-          <Feather name="heart" size={20} color="#fff" />
+          <Feather name="clock" size={20} color="#fff" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonMainX} onPress={zerarCronometroMain}>
           <Text style={styles.buttonTextDark}>x</Text>
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ff0000',
+    backgroundColor: '#0000FF',
     padding: 10,
     borderRadius: 5,
     marginLeft: 10,

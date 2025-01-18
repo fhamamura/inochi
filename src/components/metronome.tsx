@@ -49,11 +49,11 @@ const Metronome = () => {
   }, [isPlaying, bpm]);
 
   const increaseBpm = () => {
-    setBpm(bpm + 1);
+    setBpm((prevBpm) => Math.min(prevBpm + 1, 200));
   };
 
   const decreaseBpm = () => {
-    setBpm(bpm - 1);
+    setBpm((prevBpm) => Math.max(prevBpm - 1, 60));
   };
 
   const startStop = () => {

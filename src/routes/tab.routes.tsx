@@ -3,8 +3,11 @@ import {Feather} from "@expo/vector-icons";
 import HomeView from "../views/home";
 import LogsView from "../views/logs";
 import { StyleSheet } from 'react-native';
+import { createStackNavigator } from "@react-navigation/stack";
+import Medications from "../views/medications";
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 function TabRoutes() {
     return (
@@ -15,6 +18,13 @@ function TabRoutes() {
                 tabBarInactiveTintColor: '#888',
             }}
         >
+            <Tab.Screen
+                name="Medications"
+                component={Medications}
+                options={{
+                    tabBarItemStyle: { display: 'none' },
+                }}
+            /> 
             <Tab.Screen 
                 name="Home" 
                 component={HomeView} 

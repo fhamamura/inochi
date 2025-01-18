@@ -24,6 +24,7 @@ function TabRoutes() {
                     tabBarIcon: ({ color, size }) => (
                         <Feather name="home" color={color} size={size} />
                     ),
+                    headerTitle: "Inochi",
                     tabBarLabel: "Home",
                 }}
             />
@@ -34,6 +35,7 @@ function TabRoutes() {
                     tabBarIcon: ({ color, size }) => (
                         <Feather name="file-text" color={color} size={size} />
                     ),
+                    headerTitle: "Logs",
                     tabBarLabel: "Logs",
                 }}
             />
@@ -44,6 +46,7 @@ function TabRoutes() {
                     tabBarIcon: ({ color, size }) => (
                         <Feather name="clock" color={color} size={size} />
                     ),
+                    headerTitle: "Cronômetro",
                     tabBarLabel: "Cronômetro",
                 }}
             />

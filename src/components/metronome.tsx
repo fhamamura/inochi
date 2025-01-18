@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Audio } from 'expo-av';
 
 const Metronome = () => {
@@ -56,41 +56,65 @@ const Metronome = () => {
     setBpm(bpm - 1);
   };
 
-  const togglePlay = () => {
+  const startStop = () => {
     setIsPlaying(!isPlaying);
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Metronome</Text>
-      <Text style={styles.bpm}>{bpm} BPM</Text>
-      <View style={styles.buttons}>
-        <Button title="Decrease BPM" onPress={decreaseBpm} />
-        <Button title={isPlaying ? "Stop" : "Start"} onPress={togglePlay} />
-        <Button title="Increase BPM" onPress={increaseBpm} />
-      </View>
-    </View>
+          <View style={styles.buttonRow}>
+            <TouchableOpacity style={styles.buttonMetro} onPress={startStop}>
+              <Text style={styles.buttonTextBPM}>{isPlaying ? 'Parar' : 'Iniciar'}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={increaseBpm}>
+              <Text style={styles.buttonTextBPM}>+</Text>
+            </TouchableOpacity>
+                <Text style={styles.bpm}>{bpm}</Text>
+                <Text style={styles.textBpm}>bpm</Text>
+            <TouchableOpacity style={styles.button} onPress={decreaseBpm}>
+              <Text style={styles.buttonTextBPM}>-</Text>
+            </TouchableOpacity>
+          </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  title: {
-    fontSize: 24,
+  buttonRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 20,
+  },
+  buttonMetro: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#333',
+    padding: 10,
+    borderRadius: 5,
+    marginRight: 10,
+  },
+  buttonTextBPM: {
+    color: '#fff',
+    marginLeft: 10,
+    paddingRight: 10,
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
+  button: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#333',
+    padding: 10,
+    borderRadius: 5,
+    marginLeft: 10,
   },
   bpm: {
     fontSize: 48,
-    marginBottom: 20,
+    marginLeft: 5,
   },
-  buttons: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "80%",
+  textBpm: {
+    fontSize: 12,
+    marginLeft: 5,
   },
 });
 

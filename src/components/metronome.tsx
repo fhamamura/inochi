@@ -61,19 +61,19 @@ const Metronome = () => {
   };
 
   return (
-          <View style={styles.buttonRow}>
-            <TouchableOpacity style={styles.buttonMetro} onPress={startStop}>
-              <Text style={styles.buttonTextBPM}>{isPlaying ? 'Parar' : 'Iniciar'}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={increaseBpm}>
-              <Text style={styles.buttonTextBPM}>+</Text>
-            </TouchableOpacity>
-                <Text style={styles.bpm}>{bpm}</Text>
-                <Text style={styles.textBpm}>bpm</Text>
-            <TouchableOpacity style={styles.button} onPress={decreaseBpm}>
-              <Text style={styles.buttonTextBPM}>-</Text>
-            </TouchableOpacity>
-          </View>
+    <View style={styles.buttonRow}>
+      <TouchableOpacity style={styles.buttonMetro} onPress={startStop}>
+        <Text style={styles.buttonTextBPM}>{isPlaying ? 'Parar' : 'Iniciar'}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={increaseBpm}>
+        <Text style={styles.buttonTextBPM}>+</Text>
+      </TouchableOpacity>
+      <Text style={styles.bpm}>{bpm}</Text>
+      <Text style={styles.textBpm}>bpm</Text>
+      <TouchableOpacity style={styles.button} onPress={decreaseBpm}>
+        <Text style={styles.buttonTextBPM}>-</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 

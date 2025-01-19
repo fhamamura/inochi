@@ -4,48 +4,53 @@ import { Feather } from "@expo/vector-icons";
 import Moment from 'moment';
 
 const Shock = () => {
-    const [tempoDecorridoShock, setTempoDecorridoShock] = useState(0);
-    const [iniciadoShock, setIniciadoShock] = useState(false);
-    const [valorShock, setValorShock] = useState(0);
+  const [tempoDecorridoShock, setTempoDecorridoShock] = useState(0);
+  const [iniciadoShock, setIniciadoShock] = useState(false);
+  const [valorShock, setValorShock] = useState(0);
 
-    useEffect(() => {
-            let intervalShock: NodeJS.Timeout | undefined;
-    
-            if (iniciadoShock) {
-                intervalShock = setInterval(() => {
-                    setTempoDecorridoShock(prevTempoShock => prevTempoShock + 1);
-                }, 1000);
-            } else if (intervalShock) {
-                clearInterval(intervalShock);
-            }
-            return () => clearInterval(intervalShock);
-        }, [iniciadoShock]);
-    
-        const clickCronometroShock = () => {
-          setValorShock(valorShock + 1);
-          setTempoDecorridoShock(0);
-          setIniciadoShock(true);
-        };
-    
-        const zerarCronometroShock = () => {
-          setTempoDecorridoShock(0);
-          setIniciadoShock(false);
-          setValorShock(0);
-        };
+  useEffect(() => {
+    let intervalShock: NodeJS.Timeout | undefined;
 
-    return (
-      <View style={styles.buttonRow}>
+    if (iniciadoShock) {
+      intervalShock = setInterval(() => {
+        setTempoDecorridoShock(prevTempoShock => prevTempoShock + 1);
+      }, 1000);
+    } else if (intervalShock) {
+      clearInterval(intervalShock);
+    }
+    return () => clearInterval(intervalShock);
+  }, [iniciadoShock]);
+
+  const clickCronometroShock = () => {
+    setValorShock(valorShock + 1);
+    setTempoDecorridoShock(0);
+    setIniciadoShock(true);
+  };
+
+  const zerarCronometroShock = () => {
+    setTempoDecorridoShock(0);
+    setIniciadoShock(false);
+    setValorShock(0);
+  };
+
+  return (
+    <View style={styles.tableRow}>
+      <View style={styles.tableColumnLeft}>
         <Text style={styles.sideTextSec}>{Moment.utc(tempoDecorridoShock * 1000).format('HH:mm:ss')}</Text>
-        {valorShock !=0 && <Text style={styles.buttonNumber}>{valorShock}</Text>}
-      <TouchableOpacity style={styles.buttonShock} onPress={clickCronometroShock}>
-        <Text style={styles.buttonTextDark}>Choque</Text>
-        <Feather name="zap" size={20} color="#333" />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.buttonMainX} onPress={zerarCronometroShock}>
-        <Text style={styles.buttonTextDark}>x</Text>
-      </TouchableOpacity>
+      </View>
+
+      <View style={styles.tableColumnRight}>
+        {valorShock != 0 && <Text style={styles.buttonNumber}>{valorShock}</Text>}
+        <TouchableOpacity style={styles.buttonShock} onPress={clickCronometroShock}>
+          <Text style={styles.buttonTextDark}>Choque</Text>
+          <Feather name="zap" size={20} color="#333" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonMainX} onPress={zerarCronometroShock}>
+          <Text style={styles.buttonTextDark}>x</Text>
+        </TouchableOpacity>
+      </View>
     </View>
-    );
+  );
 };
 
 const styles = StyleSheet.create({
@@ -90,6 +95,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#333',
     color: '#FFF',
     padding: 5,
+  },
+  tableRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+  },
+  tableColumnLeft: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  tableColumnRight: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: 45,
   },
 });
 

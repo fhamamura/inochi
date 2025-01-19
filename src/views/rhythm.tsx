@@ -4,14 +4,14 @@ import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import { RootStackParamList } from '../types/navigation';
 
-const Medications = () => {
+const Rhythm = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const goBack = () => {
     navigation.navigate('Home');
   };
 
-  const medications = [
+  const rhythm = [
     { id: '1', name: 'Aspirina' },
     { id: '2', name: 'Ibuprofeno' },
     { id: '3', name: 'Paracetamol' },
@@ -26,13 +26,13 @@ const Medications = () => {
           <Feather name="arrow-left" size={24} color="#000" />
           <Text style={styles.backButtonText}>voltar</Text>
         </TouchableOpacity>
-        <Text style={styles.title}>Medicamentos</Text>
+        <Text style={styles.title}>Ritmo</Text>
         <FlatList
-          data={medications}
+          data={rhythm}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <View style={styles.medicationItem}>
-              <Text style={styles.medicationText}>{item.name}</Text>
+            <View style={styles.rhythmItem}>
+              <Text style={styles.rhythmText}>{item.name}</Text>
             </View>
           )}
         />
@@ -63,14 +63,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  medicationItem: {
+  rhythmItem: {
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
-  medicationText: {
+  rhythmText: {
     fontSize: 18,
   },
 });
 
-export default Medications;
+export default Rhythm;

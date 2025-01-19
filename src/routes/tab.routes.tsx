@@ -5,6 +5,8 @@ import LogsView from "../views/logs";
 import { StyleSheet } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 import Medications from "../views/medications";
+import Events from "../views/events";
+import Rhythm from "../views/rhythm";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -47,6 +49,20 @@ function TabRoutes() {
                     tabBarItemStyle: { display: 'none' },
                 }}
             /> 
+            <Tab.Screen
+                name="Events"
+                component={Events}
+                options={{
+                    tabBarItemStyle: { display: 'none' },
+                }}
+            />
+            <Tab.Screen
+                name="Rhythm"
+                component={Rhythm}
+                options={{
+                    tabBarItemStyle: { display: 'none' },
+                }}
+            />
         </Tab.Navigator>
     );
 }

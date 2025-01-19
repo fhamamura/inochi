@@ -4,14 +4,14 @@ import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import { RootStackParamList } from '../types/navigation';
 
-const Medications = () => {
+const Events = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const goBack = () => {
     navigation.navigate('Home');
   };
 
-  const medications = [
+  const events = [
     { id: '1', name: 'Aspirina' },
     { id: '2', name: 'Ibuprofeno' },
     { id: '3', name: 'Paracetamol' },
@@ -26,13 +26,13 @@ const Medications = () => {
           <Feather name="arrow-left" size={24} color="#000" />
           <Text style={styles.backButtonText}>voltar</Text>
         </TouchableOpacity>
-        <Text style={styles.title}>Medicamentos</Text>
+        <Text style={styles.title}>Eventos</Text>
         <FlatList
-          data={medications}
+          data={events}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <View style={styles.medicationItem}>
-              <Text style={styles.medicationText}>{item.name}</Text>
+            <View style={styles.eventsItem}>
+              <Text style={styles.eventsText}>{item.name}</Text>
             </View>
           )}
         />
@@ -63,14 +63,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  medicationItem: {
+  eventsItem: {
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
-  medicationText: {
+  eventsText: {
     fontSize: 18,
   },
 });
 
-export default Medications;
+export default Events;
